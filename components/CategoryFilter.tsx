@@ -10,30 +10,32 @@ export default function CategoryFilter({
   onChange: (category: string | null) => void;
 }) {
   return (
-    <div className="flex flex-wrap gap-3 justify-center">
-      <button
-        onClick={() => onChange(null)}
-        className={`px-4 py-2 rounded-full text-base font-medium transition-colors ${
-          selected === null
-            ? "bg-primary text-white"
-            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-        }`}
-      >
-        All
-      </button>
-      {CATEGORIES.map((cat) => (
+    <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+      <div className="flex gap-2 md:gap-3 md:flex-wrap md:justify-center min-w-max md:min-w-0">
         <button
-          key={cat.id}
-          onClick={() => onChange(cat.id)}
-          className={`px-4 py-2 rounded-full text-base font-medium transition-colors ${
-            selected === cat.id
+          onClick={() => onChange(null)}
+          className={`px-4 py-2 rounded-full text-sm md:text-base font-medium transition-colors whitespace-nowrap ${
+            selected === null
               ? "bg-primary text-white"
               : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           }`}
         >
-          {cat.emoji} {cat.label}
+          All
         </button>
-      ))}
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat.id}
+            onClick={() => onChange(cat.id)}
+            className={`px-4 py-2 rounded-full text-sm md:text-base font-medium transition-colors whitespace-nowrap ${
+              selected === cat.id
+                ? "bg-primary text-white"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
+          >
+            {cat.emoji} {cat.label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

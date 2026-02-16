@@ -86,7 +86,8 @@ export default async function VolunteerProfilePage({
         <h2 className="text-xl font-semibold text-gray-900 mb-4">
           Availability
         </h2>
-        <div className="overflow-x-auto">
+        {/* Desktop: table view */}
+        <div className="hidden sm:block overflow-x-auto">
           <table className="w-full border-collapse">
             <thead>
               <tr>
@@ -128,6 +129,42 @@ export default async function VolunteerProfilePage({
               ))}
             </tbody>
           </table>
+        </div>
+        {/* Mobile: stacked list view */}
+        <div className="sm:hidden space-y-3">
+          {DAYS_ORDER.map((day) => {
+            const slots = volunteer.availability[day];
+            if (!slots || slots.length === 0) return null;
+            return (
+              <div
+                key={day}
+                className="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3"
+              >
+                <span className="font-medium text-gray-800">
+                  {capitalize(day)}
+                </span>
+                <div className="flex gap-2">
+                  {slots.map((slot) => (
+                    <span
+                      key={slot}
+                      className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full"
+                    >
+                      {capitalize(slot)}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+          {DAYS_ORDER.every(
+            (d) =>
+              !volunteer.availability[d] ||
+              volunteer.availability[d].length === 0
+          ) && (
+            <p className="text-gray-500 text-center py-4">
+              Contact for availability
+            </p>
+          )}
         </div>
       </section>
 

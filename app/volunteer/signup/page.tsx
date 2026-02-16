@@ -126,7 +126,7 @@ function SignupForm() {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             What can you help with? *
           </label>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {CATEGORIES.map((cat) => (
               <label
                 key={cat.id}
@@ -153,15 +153,15 @@ function SignupForm() {
           </label>
           <div className="space-y-3">
             {DAYS.map((day) => (
-              <div key={day} className="flex items-center gap-4">
-                <span className="w-24 font-medium text-gray-700">
+              <div key={day} className="bg-gray-50 rounded-lg p-3">
+                <span className="block font-medium text-gray-700 mb-2">
                   {capitalize(day)}
                 </span>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   {TIME_SLOTS.map((slot) => (
                     <label
                       key={slot}
-                      className="flex items-center gap-1 bg-gray-50 rounded-lg px-3 py-2 cursor-pointer hover:bg-gray-100 text-sm"
+                      className="flex items-center gap-1.5 bg-white rounded-lg px-3 py-2 cursor-pointer hover:bg-gray-100 text-sm border border-gray-200"
                     >
                       <input
                         type="checkbox"

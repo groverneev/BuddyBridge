@@ -20,15 +20,26 @@ export default function RequestHelpModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-black/50 flex items-end md:items-center justify-center z-50 md:p-4"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white rounded-2xl max-w-lg w-full p-8 shadow-xl">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          Request Help from {volunteerName}
-        </h2>
+      <div className="bg-white rounded-t-2xl md:rounded-2xl max-w-lg w-full p-6 md:p-8 shadow-xl max-h-[90vh] overflow-y-auto">
+        <div className="flex items-start justify-between mb-2">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+            Request Help from {volunteerName}
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-1 -mr-1 text-gray-400 hover:text-gray-600"
+            aria-label="Close"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
         <p className="text-gray-600 mb-6">
           Fill out this form and we&apos;ll get back to you within 24 hours.
         </p>
@@ -103,14 +114,14 @@ export default function RequestHelpModal({
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              When would you like help? *
+              Preferred Date & Time *
             </label>
             <input
               type="text"
               name="preferred_date"
               required
               className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-primary focus:border-transparent"
-              placeholder="e.g. This Saturday morning, or any weekday afternoon"
+              placeholder="e.g. Saturday March 1st at 2:00 PM"
             />
           </div>
 
