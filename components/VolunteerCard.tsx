@@ -50,7 +50,7 @@ export default function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
         {volunteer.categories.map((cat) => (
           <span
             key={cat}
-            className="text-sm bg-blue-50 text-primary px-3 py-1 rounded-full"
+            className="text-sm bg-emerald-50 text-primary px-3 py-1 rounded-full"
           >
             {getCategoryLabel(cat)}
           </span>

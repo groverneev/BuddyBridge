@@ -22,19 +22,18 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-warm-bg py-16 px-4">
+      <section className="bg-gradient-to-br from-emerald-700 to-teal-800 py-20 px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Friendly Help from{" "}
-            <span className="text-primary">Local Volunteers</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Friendly Help from Local Volunteers
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
             Need a hand with technology, errands, or everyday tasks? Our
             trusted teen volunteers are here to help — free of charge.
           </p>
           <Link
             href="/helpers"
-            className="inline-block bg-primary text-white text-xl px-8 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+            className="inline-block bg-white text-emerald-700 text-xl px-8 py-4 rounded-xl font-semibold hover:bg-emerald-50 transition-colors"
           >
             Browse Helpers
           </Link>
@@ -50,7 +49,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step) => (
               <div key={step.number} className="text-center">
-                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {step.number}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
@@ -62,7 +61,7 @@ export default function HomePage() {
       </section>
 
       {/* Trust Section */}
-      <section className="py-16 px-4 bg-warm-gray">
+      <section className="py-16 px-4 bg-emerald-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Who Are Our Volunteers?

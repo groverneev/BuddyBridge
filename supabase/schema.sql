@@ -21,6 +21,7 @@ create table help_requests (
   senior_name text not null,
   senior_phone text not null,
   senior_email text,
+  senior_address text not null,
   description text not null,
   preferred_date text not null,
   status text not null default 'pending' check (status in ('pending', 'confirmed', 'completed')),

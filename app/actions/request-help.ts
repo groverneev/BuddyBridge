@@ -10,6 +10,7 @@ export async function requestHelp(formData: FormData) {
   const seniorName = formData.get("senior_name") as string;
   const seniorPhone = formData.get("senior_phone") as string;
   const seniorEmail = (formData.get("senior_email") as string) || null;
+  const seniorAddress = formData.get("senior_address") as string;
   const description = formData.get("description") as string;
   const preferredDate = formData.get("preferred_date") as string;
 
@@ -18,6 +19,7 @@ export async function requestHelp(formData: FormData) {
     senior_name: seniorName,
     senior_phone: seniorPhone,
     senior_email: seniorEmail,
+    senior_address: seniorAddress,
     description,
     preferred_date: preferredDate,
     status: "pending",
@@ -38,6 +40,7 @@ export async function requestHelp(formData: FormData) {
       `Senior: ${seniorName}`,
       `Phone: ${seniorPhone}`,
       `Email: ${seniorEmail ?? "Not provided"}`,
+      `Address: ${seniorAddress}`,
       ``,
       `Requested Volunteer: ${volunteerName}`,
       `What they need: ${description}`,

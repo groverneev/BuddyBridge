@@ -77,6 +77,19 @@ export default function RequestHelpModal({
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
+              Your Address *
+            </label>
+            <input
+              type="text"
+              name="senior_address"
+              required
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="123 Main St, City, State ZIP"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               What do you need help with? *
             </label>
             <textarea

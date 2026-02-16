@@ -16,6 +16,7 @@ export interface HelpRequest {
   senior_name: string;
   senior_phone: string;
   senior_email: string | null;
+  senior_address: string;
   description: string;
   preferred_date: string;
   status: "pending" | "confirmed" | "completed";

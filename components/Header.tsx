@@ -9,16 +9,16 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-6">
           <Link
-            href="/helpers"
+            href="/volunteer/signup"
             className="text-gray-700 hover:text-primary font-medium"
           >
-            Browse Helpers
+            Become a Volunteer
           </Link>
           <Link
-            href="/volunteer/signup"
+            href="/helpers"
             className="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-dark"
           >
-            Become a Volunteer
+            Browse Helpers
           </Link>
         </div>
       </nav>
