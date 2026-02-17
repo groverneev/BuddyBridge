@@ -6,7 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "BuddyBridge — Friendly Help from Local Volunteers",
   description:
-    "Connect with trusted teen volunteers in your community for help with everyday tasks like tech setup, errands, and companionship.",
+    "Connect with trusted teen volunteers in your community for help with everyday tasks like tech setup, household chores, and companionship.",
 };
 
 export default function RootLayout({

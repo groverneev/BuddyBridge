@@ -25,10 +25,10 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-emerald-700 to-teal-800 py-20 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Friendly Help from Local Volunteers
+            Bridging Generations, One Task at a Time
           </h1>
           <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-            Need a hand with technology, errands, or everyday tasks? Our
+            Need a hand with technology, household chores, or everyday tasks? Our
             trusted teen volunteers are here to help — free of charge.
           </p>
           <Link

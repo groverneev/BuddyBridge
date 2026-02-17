@@ -41,7 +41,7 @@ export default function AboutPage() {
           <p className="text-gray-600 mb-4">
             BuddyBridge is a free platform that connects seniors in our
             community with trusted teen volunteers who want to help. Whether
-            it&apos;s setting up a phone, getting help with errands, or simply
+            it&apos;s setting up a phone, getting help with household chores, or simply
             having someone to talk to, we make it easy to find a friendly
             helping hand.
           </p>

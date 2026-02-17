@@ -1,7 +1,7 @@
 export const CATEGORIES = [
   { id: "tech", label: "Tech Help", emoji: "💻" },
   { id: "household", label: "Household Tasks", emoji: "🏠" },
-  { id: "errands", label: "Errands & Transport", emoji: "🚗" },
+  { id: "errands", label: "Errands", emoji: "🛒" },
   { id: "companionship", label: "Companionship", emoji: "☕" },
   { id: "paperwork", label: "Paperwork & Forms", emoji: "📋" },
 ] as const;
