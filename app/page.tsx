@@ -91,6 +91,42 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Our Story */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Our Story
+          </h2>
+          <p className="text-lg text-gray-600 mb-2">
+            It started on a sidewalk in Saratoga, when an elderly neighbor
+            collapsed while taking out his trash.
+          </p>
+          <p className="text-lg text-gray-600 mb-8">
+            That moment sparked a simple idea: seniors need a hand, teens need
+            meaningful connection. What if we brought them together?
+          </p>
+          <Link
+            href="/our-story"
+            className="inline-flex items-center text-lg text-primary font-semibold bg-emerald-50 border border-emerald-200 px-6 py-3 rounded-xl hover:bg-emerald-100 transition-colors"
+          >
+            Read the full story
+            <svg
+              className="w-5 h-5 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
