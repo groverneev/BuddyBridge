@@ -79,6 +79,9 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold text-gray-800 mb-1">
                 Neev Grover
               </h3>
+              <p className="text-emerald-700 text-sm font-medium mb-1">
+                Founder
+              </p>
               <p className="text-gray-500 mb-4">
                 Sophomore at the Harker School
               </p>
