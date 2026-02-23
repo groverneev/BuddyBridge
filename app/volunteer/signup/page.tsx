@@ -1,10 +1,12 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { volunteerSignup } from "@/app/actions/volunteer-signup";
 import { CATEGORIES } from "@/lib/categories";
 import Link from "next/link";
+
+const MAX_PHOTO_BYTES = 10 * 1024 * 1024; // 10 MB
 
 const DAYS = [
   "monday",
@@ -24,6 +26,7 @@ function capitalize(s: string) {
 function SignupForm() {
   const searchParams = useSearchParams();
   const success = searchParams.get("success");
+  const [photoError, setPhotoError] = useState<string | null>(null);
 
   if (success) {
     return (
@@ -104,7 +107,18 @@ function SignupForm() {
             name="photo"
             accept="image/*"
             className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file && file.size > MAX_PHOTO_BYTES) {
+                setPhotoError(`Photo is too large (${(file.size / 1024 / 1024).toFixed(1)} MB). Please choose an image under 10 MB.`);
+              } else {
+                setPhotoError(null);
+              }
+            }}
           />
+          {photoError && (
+            <p className="mt-1 text-sm text-red-600">{photoError}</p>
+          )}
         </div>
 
         {/* Bio */}
@@ -180,7 +194,8 @@ function SignupForm() {
 
         <button
           type="submit"
-          className="w-full bg-primary text-white text-xl px-6 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+          disabled={!!photoError}
+          className="w-full bg-primary text-white text-xl px-6 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Sign Up as a Volunteer
         </button>

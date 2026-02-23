@@ -5,8 +5,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
-  serverActions: {
-    bodySizeLimit: "30mb",
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "30mb",
+    },
   },
   images: {
     remotePatterns: [
