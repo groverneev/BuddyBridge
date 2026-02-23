@@ -18,7 +18,7 @@ BuddyBridge ([buddybridge.us](https://buddybridge.us)) is a marketplace connecti
 - **Lazy client initialization** — `lib/supabase.ts` and `lib/resend.ts` use `getSupabase()` / `getResend()` to avoid crashes when env vars are missing at build time.
 - **Server components + client wrappers** — browse page fetches data server-side, passes to a client component for filtering. Profile page is server-rendered, with a client component for the modal.
 - **`force-dynamic`** on `/helpers` and `/helpers/[id]` to prevent static prerendering (needs live Supabase data).
-- **Body size limit** set to 30mb in `next.config.ts` under `experimental.serverActions` for photo uploads.
+- **Body size limit** set to 30mb in `next.config.ts` under `serverActions` (top-level, not `experimental`) for photo uploads. In Next.js 15+, `serverActions` is no longer under `experimental`.
 - **Turbopack root** explicitly set to `__dirname` in `next.config.ts` — there is a stray `package-lock.json` at `/Users/neevgrover/` that causes Next.js to misdetect the workspace root, breaking Tailwind CSS resolution. Do not remove `turbopack.root`.
 
 ## Database
