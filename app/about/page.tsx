@@ -79,9 +79,6 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold text-gray-800 mb-1">
                 Neev Grover
               </h3>
-              <p className="text-emerald-700 text-sm font-medium mb-1">
-                Founder
-              </p>
               <p className="text-gray-500 mb-4">
                 Sophomore at the Harker School
               </p>
@@ -131,7 +128,7 @@ export default function AboutPage() {
         {/* Volunteers */}
         <section className="bg-white rounded-xl border border-gray-200 p-6 md:p-8 mt-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">
-            Our Volunteers
+            Founding Volunteers
           </h2>
           <div className="flex flex-col md:flex-row gap-8">
             {/* Photo */}
@@ -150,9 +147,6 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold text-gray-800 mb-1">
                 Meher Batra
               </h3>
-              <p className="text-emerald-700 text-sm font-medium mb-1">
-                Founding Volunteer
-              </p>
               <p className="text-gray-500 mb-4">
                 7th grader at Redwood Middle School
               </p>
