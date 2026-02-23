@@ -1,12 +1,10 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useTransition } from "react";
 import { volunteerSignup } from "@/app/actions/volunteer-signup";
 import { CATEGORIES } from "@/lib/categories";
 import Link from "next/link";
-
-const MAX_PHOTO_BYTES = 10 * 1024 * 1024; // 10 MB
 
 const DAYS = [
   "monday",
@@ -23,10 +21,51 @@ function capitalize(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+/** Resize + re-encode an image to JPEG so it never exceeds ~500 KB. */
+async function compressImage(file: File): Promise<File> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const MAX = 1200;
+        let { width, height } = img;
+        if (width > MAX || height > MAX) {
+          if (width >= height) {
+            height = Math.round((height / width) * MAX);
+            width = MAX;
+          } else {
+            width = Math.round((width / height) * MAX);
+            height = MAX;
+          }
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d")!.drawImage(img, 0, 0, width, height);
+        canvas.toBlob(
+          (blob) =>
+            resolve(
+              blob
+                ? new File([blob], file.name.replace(/\.[^.]+$/, ".jpg"), {
+                    type: "image/jpeg",
+                  })
+                : file
+            ),
+          "image/jpeg",
+          0.82
+        );
+      };
+      img.src = e.target!.result as string;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 function SignupForm() {
   const searchParams = useSearchParams();
   const success = searchParams.get("success");
-  const [photoError, setPhotoError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
 
   if (success) {
     return (
@@ -49,6 +88,19 @@ function SignupForm() {
     );
   }
 
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const photo = formData.get("photo") as File | null;
+    if (photo && photo.size > 0) {
+      const compressed = await compressImage(photo);
+      formData.set("photo", compressed, compressed.name);
+    }
+    startTransition(async () => {
+      await volunteerSignup(formData);
+    });
+  }
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -58,7 +110,7 @@ function SignupForm() {
         Join BuddyBridge and help seniors in your community with everyday tasks.
       </p>
 
-      <form action={volunteerSignup} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -107,18 +159,10 @@ function SignupForm() {
             name="photo"
             accept="image/*"
             className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file && file.size > MAX_PHOTO_BYTES) {
-                setPhotoError(`Photo is too large (${(file.size / 1024 / 1024).toFixed(1)} MB). Please choose an image under 10 MB.`);
-              } else {
-                setPhotoError(null);
-              }
-            }}
           />
-          {photoError && (
-            <p className="mt-1 text-sm text-red-600">{photoError}</p>
-          )}
+          <p className="mt-1 text-xs text-gray-500">
+            Any size is fine — photos are automatically resized before upload.
+          </p>
         </div>
 
         {/* Bio */}
@@ -194,10 +238,10 @@ function SignupForm() {
 
         <button
           type="submit"
-          disabled={!!photoError}
+          disabled={isPending}
           className="w-full bg-primary text-white text-xl px-6 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Sign Up as a Volunteer
+          {isPending ? "Signing up…" : "Sign Up as a Volunteer"}
         </button>
       </form>
     </div>
