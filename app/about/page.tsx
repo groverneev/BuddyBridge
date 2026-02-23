@@ -125,6 +125,41 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Volunteers */}
+        <section className="bg-white rounded-xl border border-gray-200 p-6 md:p-8 mt-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">
+            Our Volunteers
+          </h2>
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Photo */}
+            <div className="flex-shrink-0">
+              <Image
+                src="/meher.png"
+                alt="Meher Batra"
+                width={128}
+                height={128}
+                className="w-32 h-32 rounded-full object-cover"
+              />
+            </div>
+
+            {/* Bio */}
+            <div className="flex-1">
+              <h3 className="text-xl font-semibold text-gray-800 mb-1">
+                Meher Batra
+              </h3>
+              <p className="text-emerald-700 text-sm font-medium mb-1">
+                Founding Volunteer
+              </p>
+              <p className="text-gray-500 mb-4">
+                7th grader at Redwood Middle School
+              </p>
+              <p className="text-gray-600">
+                Hi! I&apos;m Meher Batra, a 7th grader at Redwood Middle School. I have a huge passion for the performing arts—specifically singing, dancing, and theater. When I&apos;m not on stage, I love meeting new people and making friends of all ages!
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <div className="text-center mt-8">
           <Link

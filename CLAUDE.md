@@ -19,6 +19,7 @@ BuddyBridge ([buddybridge.us](https://buddybridge.us)) is a marketplace connecti
 - **Server components + client wrappers** — browse page fetches data server-side, passes to a client component for filtering. Profile page is server-rendered, with a client component for the modal.
 - **`force-dynamic`** on `/helpers` and `/helpers/[id]` to prevent static prerendering (needs live Supabase data).
 - **Body size limit** set to 30mb in `next.config.ts` under `experimental.serverActions` for photo uploads.
+- **Turbopack root** explicitly set to `__dirname` in `next.config.ts` — there is a stray `package-lock.json` at `/Users/neevgrover/` that causes Next.js to misdetect the workspace root, breaking Tailwind CSS resolution. Do not remove `turbopack.root`.
 
 ## Database
 
@@ -36,7 +37,7 @@ Storage bucket `volunteer-photos` is public for reads.
 - `components/` — shared UI components (Header, Footer, VolunteerCard, CategoryFilter, RequestHelpModal)
 - `lib/` — types, constants, Supabase/Resend clients
 - `supabase/` — SQL schema
-- `public/` — static assets (neev.png headshot, icon.svg favicon)
+- `public/` — static assets (neev.png creator headshot, meher.png volunteer headshot, icon.svg favicon)
 
 ## Design
 
