@@ -130,29 +130,55 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold text-gray-800 mb-6">
             Founding Volunteers
           </h2>
-          <div className="flex flex-col md:flex-row gap-8">
-            {/* Photo */}
-            <div className="flex-shrink-0">
-              <Image
-                src="/meher.png"
-                alt="Meher Batra"
-                width={128}
-                height={128}
-                className="w-32 h-32 rounded-full object-cover"
-              />
+          <div className="flex flex-col gap-8">
+            {/* Meher */}
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/meher.png"
+                  alt="Meher Batra"
+                  width={128}
+                  height={128}
+                  className="w-32 h-32 rounded-full object-cover"
+                />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-gray-800 mb-1">
+                  Meher Batra
+                </h3>
+                <p className="text-gray-500 mb-4">
+                  7th grader at Redwood Middle School
+                </p>
+                <p className="text-gray-600">
+                  Hi! I&apos;m Meher Batra, a 7th grader at Redwood Middle School. I have a huge passion for the performing arts—specifically singing, dancing, and theater. When I&apos;m not on stage, I love meeting new people and making friends of all ages!
+                </p>
+              </div>
             </div>
 
-            {/* Bio */}
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold text-gray-800 mb-1">
-                Meher Batra
-              </h3>
-              <p className="text-gray-500 mb-4">
-                7th grader at Redwood Middle School
-              </p>
-              <p className="text-gray-600">
-                Hi! I&apos;m Meher Batra, a 7th grader at Redwood Middle School. I have a huge passion for the performing arts—specifically singing, dancing, and theater. When I&apos;m not on stage, I love meeting new people and making friends of all ages!
-              </p>
+            <hr className="border-gray-100" />
+
+            {/* Anaika */}
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/anika.png"
+                  alt="Anaika Verma"
+                  width={128}
+                  height={128}
+                  className="w-32 h-32 rounded-full object-cover"
+                />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-gray-800 mb-1">
+                  Anaika Verma
+                </h3>
+                <p className="text-gray-500 mb-4">
+                  Student at The Harker School
+                </p>
+                <p className="text-gray-600">
+                  Hi, I&apos;m Anaika, an 8th grader at The Harker School who is passionate about basketball and personal growth. Through sports and academics, I&apos;ve developed a strong sense of teamwork, resilience, and responsibility. I strive to bring positive energy and commitment into everything I do. When I&apos;m not on the court, I like listening to music and hanging out with my friends!
+                </p>
+              </div>
             </div>
           </div>
         </section>
