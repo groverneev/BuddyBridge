@@ -173,7 +173,7 @@ export default function AboutPage() {
                   Anaika Verma
                 </h3>
                 <p className="text-gray-500 mb-4">
-                  Student at The Harker School
+                  8th grader at The Harker School
                 </p>
                 <p className="text-gray-600">
                   Hi, I&apos;m Anaika, an 8th grader at The Harker School who is passionate about basketball and personal growth. Through sports and academics, I&apos;ve developed a strong sense of teamwork, resilience, and responsibility. I strive to bring positive energy and commitment into everything I do. When I&apos;m not on the court, I like listening to music and hanging out with my friends!
