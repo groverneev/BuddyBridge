@@ -1,18 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Volunteer } from "@/lib/types";
-import { getCategoryLabel } from "@/lib/categories";
-
-const DAYS_ORDER = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-
-function formatAvailability(availability: Record<string, string[]>): string {
-  const available = DAYS_ORDER.filter((d) => availability[d]?.length > 0);
-  if (available.length === 0) return "Contact for availability";
-  if (available.length >= 5) return "Most days";
-  return available
-    .map((d) => d.charAt(0).toUpperCase() + d.slice(1, 3))
-    .join(", ");
-}
 
 export default function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
   return (
@@ -36,26 +24,11 @@ export default function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
             </div>
           )}
         </div>
-        <div>
-          <h3 className="text-xl font-semibold text-gray-900">
-            {volunteer.name}
-          </h3>
-          <p className="text-sm text-gray-500">
-            {formatAvailability(volunteer.availability)}
-          </p>
-        </div>
+        <h3 className="text-xl font-semibold text-gray-900">
+          {volunteer.name}
+        </h3>
       </div>
-      <p className="text-gray-600 mb-4 line-clamp-2">{volunteer.bio}</p>
-      <div className="flex flex-wrap gap-2">
-        {volunteer.categories.map((cat) => (
-          <span
-            key={cat}
-            className="text-sm bg-emerald-50 text-primary px-3 py-1 rounded-full"
-          >
-            {getCategoryLabel(cat)}
-          </span>
-        ))}
-      </div>
+      <p className="text-gray-600 line-clamp-2">{volunteer.bio}</p>
     </Link>
   );
 }

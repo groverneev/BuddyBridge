@@ -1,25 +1,9 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useTransition } from "react";
+import { Suspense, useTransition, useState } from "react";
 import { volunteerSignup } from "@/app/actions/volunteer-signup";
-import { CATEGORIES } from "@/lib/categories";
 import Link from "next/link";
-
-const DAYS = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
-];
-const TIME_SLOTS = ["morning", "afternoon", "evening"];
-
-function capitalize(s: string) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
 
 /** Resize + re-encode an image to JPEG so it never exceeds ~500 KB. */
 async function compressImage(file: File): Promise<File> {
@@ -66,6 +50,7 @@ function SignupForm() {
   const searchParams = useSearchParams();
   const success = searchParams.get("success");
   const [isPending, startTransition] = useTransition();
+  const [photoName, setPhotoName] = useState<string | null>(null);
 
   if (success) {
     return (
@@ -151,18 +136,24 @@ function SignupForm() {
 
         {/* Photo */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <span className="block text-sm font-medium text-gray-700 mb-1">
             Profile Photo (optional)
+          </span>
+          <label className="flex items-center w-full border border-gray-300 rounded-lg overflow-hidden cursor-pointer hover:border-gray-400 transition-colors">
+            <span className="bg-gray-100 border-r border-gray-300 px-4 py-3 text-base font-medium text-gray-700 whitespace-nowrap">
+              Choose Photo
+            </span>
+            <span className="px-4 py-3 text-base text-gray-500 truncate">
+              {photoName ?? "No file chosen"}
+            </span>
+            <input
+              type="file"
+              name="photo"
+              accept="image/*"
+              className="sr-only"
+              onChange={(e) => setPhotoName(e.target.files?.[0]?.name ?? null)}
+            />
           </label>
-          <input
-            type="file"
-            name="photo"
-            accept="image/*"
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base"
-          />
-          <p className="mt-1 text-xs text-gray-500">
-            Any size is fine — photos are automatically resized before upload.
-          </p>
         </div>
 
         {/* Bio */}
@@ -177,63 +168,6 @@ function SignupForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-primary focus:border-transparent"
             placeholder="Tell seniors a bit about yourself — what you enjoy, why you want to volunteer, etc."
           />
-        </div>
-
-        {/* Categories */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            What can you help with? *
-          </label>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {CATEGORIES.map((cat) => (
-              <label
-                key={cat.id}
-                className="flex items-center gap-2 bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100"
-              >
-                <input
-                  type="checkbox"
-                  name="categories"
-                  value={cat.id}
-                  className="w-5 h-5 rounded text-primary"
-                />
-                <span>
-                  {cat.emoji} {cat.label}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Availability */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            When are you available?
-          </label>
-          <div className="space-y-3">
-            {DAYS.map((day) => (
-              <div key={day} className="bg-gray-50 rounded-lg p-3">
-                <span className="block font-medium text-gray-700 mb-2">
-                  {capitalize(day)}
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {TIME_SLOTS.map((slot) => (
-                    <label
-                      key={slot}
-                      className="flex items-center gap-1.5 bg-white rounded-lg px-3 py-2 cursor-pointer hover:bg-gray-100 text-sm border border-gray-200"
-                    >
-                      <input
-                        type="checkbox"
-                        name={`availability_${day}`}
-                        value={slot}
-                        className="w-4 h-4 rounded text-primary"
-                      />
-                      <span>{capitalize(slot)}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         <button

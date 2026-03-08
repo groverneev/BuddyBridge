@@ -9,26 +9,7 @@ export async function volunteerSignup(formData: FormData) {
   const email = formData.get("email") as string;
   const phone = (formData.get("phone") as string) || null;
   const bio = formData.get("bio") as string;
-  const categories = formData.getAll("categories") as string[];
   const photo = formData.get("photo") as File | null;
-
-  // Parse availability from form
-  const days = [
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-    "sunday",
-  ];
-  const availability: Record<string, string[]> = {};
-  for (const day of days) {
-    const slots = formData.getAll(`availability_${day}`) as string[];
-    if (slots.length > 0) {
-      availability[day] = slots;
-    }
-  }
 
   const supabase = getSupabase();
 
@@ -55,8 +36,6 @@ export async function volunteerSignup(formData: FormData) {
     email,
     phone,
     bio,
-    categories,
-    availability,
     photo_url: photoUrl,
   });
 
@@ -74,7 +53,6 @@ export async function volunteerSignup(formData: FormData) {
       `Name: ${name}`,
       `Email: ${email}`,
       `Phone: ${phone ?? "Not provided"}`,
-      `Categories: ${categories.join(", ")}`,
       `Bio: ${bio}`,
       ``,
       `Please review their profile in the database.`,

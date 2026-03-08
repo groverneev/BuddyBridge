@@ -35,7 +35,7 @@ export default function HomePage() {
             href="/helpers"
             className="inline-block bg-white text-emerald-700 text-xl px-8 py-4 rounded-xl font-semibold hover:bg-emerald-50 transition-colors"
           >
-            Browse Helpers
+            Request Help
           </Link>
         </div>
       </section>

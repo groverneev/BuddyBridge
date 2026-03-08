@@ -1,25 +1,10 @@
 import { getSupabase } from "@/lib/supabase";
 import { Volunteer } from "@/lib/types";
-import { getCategoryLabel } from "@/lib/categories";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 import VolunteerProfileClient from "./profile-client";
-
-const DAYS_ORDER = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
-];
-
-function capitalize(s: string) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
 
 export default async function VolunteerProfilePage({
   params,
@@ -60,16 +45,6 @@ export default async function VolunteerProfilePage({
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             {volunteer.name}
           </h1>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {volunteer.categories.map((cat) => (
-              <span
-                key={cat}
-                className="text-sm bg-emerald-50 text-primary px-3 py-1 rounded-full"
-              >
-                {getCategoryLabel(cat)}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -79,93 +54,6 @@ export default async function VolunteerProfilePage({
         <p className="text-gray-600 text-lg leading-relaxed">
           {volunteer.bio}
         </p>
-      </section>
-
-      {/* Availability */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          Availability
-        </h2>
-        {/* Desktop: table view */}
-        <div className="hidden sm:block overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr>
-                <th className="text-left text-sm font-medium text-gray-500 py-2 pr-4 w-24"></th>
-                {DAYS_ORDER.map((day) => (
-                  <th
-                    key={day}
-                    className="text-center text-sm font-medium text-gray-700 py-2 px-1"
-                  >
-                    {capitalize(day).slice(0, 3)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {["morning", "afternoon", "evening"].map((slot) => (
-                <tr key={slot} className="border-t border-gray-100">
-                  <td className="text-sm text-gray-500 py-3 pr-4">
-                    {capitalize(slot)}
-                  </td>
-                  {DAYS_ORDER.map((day) => {
-                    const available =
-                      volunteer.availability[day]?.includes(slot);
-                    return (
-                      <td key={day} className="text-center py-3 px-1">
-                        {available ? (
-                          <span className="inline-block w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full leading-8 text-sm font-medium">
-                            &#10003;
-                          </span>
-                        ) : (
-                          <span className="inline-block w-8 h-8 bg-gray-50 text-gray-300 rounded-full leading-8 text-sm">
-                            &mdash;
-                          </span>
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {/* Mobile: stacked list view */}
-        <div className="sm:hidden space-y-3">
-          {DAYS_ORDER.map((day) => {
-            const slots = volunteer.availability[day];
-            if (!slots || slots.length === 0) return null;
-            return (
-              <div
-                key={day}
-                className="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3"
-              >
-                <span className="font-medium text-gray-800">
-                  {capitalize(day)}
-                </span>
-                <div className="flex gap-2">
-                  {slots.map((slot) => (
-                    <span
-                      key={slot}
-                      className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full"
-                    >
-                      {capitalize(slot)}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-          {DAYS_ORDER.every(
-            (d) =>
-              !volunteer.availability[d] ||
-              volunteer.availability[d].length === 0
-          ) && (
-            <p className="text-gray-500 text-center py-4">
-              Contact for availability
-            </p>
-          )}
-        </div>
       </section>
 
       {/* Request Help Button */}
