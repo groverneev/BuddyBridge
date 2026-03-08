@@ -12,46 +12,6 @@ A marketplace-style platform connecting seniors with trusted teen volunteers for
 - **Email:** Resend
 - **Hosting:** Vercel
 
-## Getting Started
-
-### 1. Install dependencies
-
-```bash
-npm install
-```
-
-### 2. Set up Supabase
-
-- Create a project at [supabase.com](https://supabase.com)
-- Run `supabase/schema.sql` in the SQL Editor to create tables and storage bucket
-
-### 3. Set up Resend
-
-- Create an account at [resend.com](https://resend.com)
-- Generate an API key
-
-### 4. Configure environment
-
-Copy `.env.example` to `.env.local` and fill in your values:
-
-```bash
-cp .env.example .env.local
-```
-
-Required variables:
-- `NEXT_PUBLIC_SUPABASE_URL` — Supabase project URL
-- `SUPABASE_SERVICE_ROLE_KEY` — Supabase service role key
-- `RESEND_API_KEY` — Resend API key
-- `ADMIN_EMAIL` — Email to receive notifications
-
-### 5. Run dev server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
 ## Project Structure
 
 ```
