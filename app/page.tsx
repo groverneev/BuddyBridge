@@ -3,18 +3,18 @@ import Link from "next/link";
 const steps = [
   {
     number: "1",
-    title: "Browse Helpers",
-    description: "Look through our friendly volunteers and find someone who can help with what you need.",
+    title: "Request Help",
+    description: "Start by sending in a help request so we can connect you with the right volunteer.",
   },
   {
     number: "2",
-    title: "Request Help",
-    description: "Tell us what you need and when. It only takes a minute to fill out a simple form.",
+    title: "Tell Us What You Need",
+    description: "Share what you need help with and any timing details. The form is simple and quick to fill out.",
   },
   {
     number: "3",
-    title: "Get Help",
-    description: "We'll connect you with a volunteer and confirm everything by phone or email.",
+    title: "We'll Be There",
+    description: "We'll match you with a volunteer and follow up by phone or email to confirm everything.",
   },
 ];
 
