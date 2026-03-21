@@ -2,15 +2,15 @@ import Link from "next/link";
 
 const reviews = [
   {
-    quote: "My volunteer comes by every week to take out the trash. It's a small thing, but it really means a lot to me.",
+    quote: "Neev comes by every week to take out the trash. It's a small thing, but it really means a lot to me.",
     name: "Trimual Kumar",
   },
   {
-    quote: "I was nervous about having a stranger help me, but my volunteer was amazing. He was so kind that I felt completely at ease right away.",
+    quote: "I was nervous about having a stranger help me, but Neev was amazing. He was so kind that I felt completely at ease right away.",
     name: "Mr. Roberts",
   },
   {
-    quote: "I didn't expect how sweet my volunteer would be. She would stop for a little chat on my porch for a couple of minutes and it would brighten my day.",
+    quote: "I didn't expect how sweet Meher would be. She would stop for a little chat on my porch for a couple of minutes and it would brighten my day.",
     name: "Mr. Jain",
   },
 ];
