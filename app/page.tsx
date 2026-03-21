@@ -2,18 +2,18 @@ import Link from "next/link";
 
 const reviews = [
   {
-    quote: "BuddyBridge sent the sweetest young man to help me set up my new iPad. He was so patient — I finally know how to video call my grandchildren!",
-    name: "Margaret T.",
+    quote: "My volunteer comes by every week to take out the trash. It's a small thing, but it really means a lot to me.",
+    name: "Trimual Kumar",
     image: null as string | null, // replace with real image path when ready
   },
   {
-    quote: "I was nervous about having a stranger help me, but my volunteer was wonderful. She helped me sort through a mountain of paperwork in just two hours.",
-    name: "Harold B.",
+    quote: "I was nervous about having a stranger help me, but my volunteer was amazing. He was so kind that I felt completely at ease right away.",
+    name: "Mr. Roberts",
     image: null as string | null,
   },
   {
-    quote: "These kids truly care. My volunteer came back a second time just to make sure everything was working. I didn't have to ask — he just showed up.",
-    name: "Dorothy K.",
+    quote: "I didn't expect how sweet my volunteer would be. She would stop for a little chat on my porch for a couple of minutes and it would brighten my day.",
+    name: "Mr. Jain",
     image: null as string | null,
   },
 ];
