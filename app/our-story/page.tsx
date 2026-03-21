@@ -19,7 +19,7 @@ export default function OurStoryPage() {
           </p>
 
           <p>
-            An elderly neighbor had collapsed while taking out his trash — alone.
+            An elderly neighbor had collapsed while taking out his trash, alone.
             As my father and I rushed to help, one thought kept running through
             my mind: <em>Why did an 85-year-old have to do this by himself?</em>
           </p>
@@ -37,9 +37,9 @@ export default function OurStoryPage() {
           </p>
 
           <p>
-            My generation lives in a &ldquo;social media first&rdquo; world —
-            connected online, but often isolated in real life. We scroll past
-            each other. We rarely talk to anyone outside our age group.
+            My generation lives in a social media first world,
+            connected online but often isolated in real life.
+            We rarely talk to anyone outside our age group.
             Researchers call it a &ldquo;crisis of connection,&rdquo; and I see
             it every day.
           </p>
@@ -58,16 +58,16 @@ export default function OurStoryPage() {
 
           <p>
             <strong className="text-gray-800">BuddyBridge</strong> is that
-            bridge — a simple way for students to help seniors in their
+            bridge: a simple way for students to help seniors in their
             community with things like setting up email, carrying groceries, or
-            just sharing a conversation. No apps to download. No complicated
-            technology. Just neighbors helping neighbors.
+            just sharing a conversation. There are no apps to download and there isn't any complicated
+            technology involved. We are simply neighbors helping neighbors.
           </p>
 
           <p>
             We&apos;re not trying to replace family or professional care.
-            We&apos;re here for the small stuff that makes daily life a little
-            easier — and a little less lonely, for everyone.
+            We&apos;re simply here for the small stuff that makes daily life a little
+            easier and a little less lonely for everyone.
           </p>
 
           <p className="text-right text-gray-800 font-medium italic pt-4">

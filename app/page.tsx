@@ -1,5 +1,23 @@
 import Link from "next/link";
 
+const reviews = [
+  {
+    quote: "BuddyBridge sent the sweetest young man to help me set up my new iPad. He was so patient — I finally know how to video call my grandchildren!",
+    name: "Margaret T.",
+    image: null as string | null, // replace with real image path when ready
+  },
+  {
+    quote: "I was nervous about having a stranger help me, but my volunteer was wonderful. She helped me sort through a mountain of paperwork in just two hours.",
+    name: "Harold B.",
+    image: null as string | null,
+  },
+  {
+    quote: "These kids truly care. My volunteer came back a second time just to make sure everything was working. I didn't have to ask — he just showed up.",
+    name: "Dorothy K.",
+    image: null as string | null,
+  },
+];
+
 const steps = [
   {
     number: "1",
@@ -29,7 +47,7 @@ export default function HomePage() {
           </h1>
           <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
             Need a hand with technology, household chores, or everyday tasks? Our
-            trusted teen volunteers are here to help — free of charge.
+            trusted teen volunteers are here to help, free of charge.
           </p>
           <Link
             href="/helpers"
@@ -80,7 +98,7 @@ export default function HomePage() {
               href="/helpers"
               className="inline-block bg-primary text-white text-lg px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-colors"
             >
-              Find a Helper
+              Get Help
             </Link>
             <Link
               href="/volunteer/signup"
@@ -92,8 +110,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Our Story */}
+      {/* Reviews */}
       <section className="py-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            What Seniors Are Saying
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {reviews.map((review) => (
+              <div key={review.name} className="flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-full bg-gray-200 mb-4 overflow-hidden flex items-center justify-center">
+                  {review.image ? (
+                    <img src={review.image} alt={review.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <svg className="w-10 h-10 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                    </svg>
+                  )}
+                </div>
+                <span className="text-4xl text-emerald-300 leading-none mb-2">&ldquo;</span>
+                <p className="text-gray-600 italic mb-4">{review.quote}</p>
+                <p className="font-semibold text-gray-800 text-sm">— {review.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story */}
+      <section className="py-16 px-4 bg-emerald-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Our Story
