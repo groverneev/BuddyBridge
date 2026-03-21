@@ -4,17 +4,14 @@ const reviews = [
   {
     quote: "My volunteer comes by every week to take out the trash. It's a small thing, but it really means a lot to me.",
     name: "Trimual Kumar",
-    image: null as string | null, // replace with real image path when ready
   },
   {
     quote: "I was nervous about having a stranger help me, but my volunteer was amazing. He was so kind that I felt completely at ease right away.",
     name: "Mr. Roberts",
-    image: null as string | null,
   },
   {
     quote: "I didn't expect how sweet my volunteer would be. She would stop for a little chat on my porch for a couple of minutes and it would brighten my day.",
     name: "Mr. Jain",
-    image: null as string | null,
   },
 ];
 
@@ -119,15 +116,6 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {reviews.map((review) => (
               <div key={review.name} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-full bg-gray-200 mb-4 overflow-hidden flex items-center justify-center">
-                  {review.image ? (
-                    <img src={review.image} alt={review.name} className="w-full h-full object-cover" />
-                  ) : (
-                    <svg className="w-10 h-10 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-                    </svg>
-                  )}
-                </div>
                 <span className="text-4xl text-emerald-300 leading-none mb-2">&ldquo;</span>
                 <p className="text-gray-600 italic mb-4">{review.quote}</p>
                 <p className="font-semibold text-gray-800 text-sm">— {review.name}</p>
