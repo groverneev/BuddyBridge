@@ -1,6 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+
+// Phone photos are either portrait (3:4) or landscape (4:3)
+function getDimensions(filename: string) {
+  return filename.includes("PORTRAIT")
+    ? { width: 900, height: 1200 }
+    : { width: 1200, height: 900 };
+}
 
 export default function PilotClient({ images }: { images: string[] }) {
   const [selected, setSelected] = useState<string | null>(null);
@@ -31,20 +39,26 @@ export default function PilotClient({ images }: { images: string[] }) {
     <>
       {/* Masonry grid */}
       <div className="columns-2 md:columns-3 gap-3">
-        {images.map((img, i) => (
-          <div
-            key={img}
-            className="break-inside-avoid mb-3 cursor-pointer overflow-hidden rounded-xl group"
-            onClick={() => open(img, i)}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`/Pictures/${img}`}
-              alt=""
-              className="w-full block transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-        ))}
+        {images.map((img, i) => {
+          const { width, height } = getDimensions(img);
+          return (
+            <div
+              key={img}
+              className="break-inside-avoid mb-3 cursor-pointer overflow-hidden rounded-xl group"
+              onClick={() => open(img, i)}
+            >
+              <Image
+                src={`/Pictures/${img}`}
+                alt=""
+                width={width}
+                height={height}
+                style={{ width: "100%", height: "auto" }}
+                className="transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* Lightbox */}
@@ -76,11 +90,12 @@ export default function PilotClient({ images }: { images: string[] }) {
           </button>
 
           {/* Image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={`/Pictures/${selected}`}
             alt=""
-            className="max-w-full max-h-[90vh] rounded-xl object-contain shadow-2xl"
+            {...getDimensions(selected)}
+            style={{ maxWidth: "100%", maxHeight: "90vh", width: "auto", height: "auto" }}
+            className="rounded-xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
 
