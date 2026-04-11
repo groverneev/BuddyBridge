@@ -2,30 +2,7 @@
 
 import { useState } from "react";
 
-const images = [
-  "PXL_20260223_003432551.PORTRAIT.jpg",
-  "PXL_20260223_003504790.PORTRAIT.jpg",
-  "PXL_20260223_004959220.PORTRAIT.jpg",
-  "PXL_20260223_005031074.PORTRAIT.jpg",
-  "PXL_20260223_005108323.PORTRAIT.jpg",
-  "PXL_20260309_012724726.jpg",
-  "PXL_20260309_013010310.jpg",
-  "PXL_20260309_014337371.jpg",
-  "PXL_20260309_014347681.jpg",
-  "PXL_20260309_014448458.jpg",
-  "PXL_20260309_014527829.jpg",
-  "PXL_20260309_014814091.jpg",
-  "PXL_20260309_015217192.PORTRAIT.jpg",
-  "PXL_20260315_013843976.MP.jpg",
-  "PXL_20260315_013844970.jpg",
-  "PXL_20260315_014054855.MP.jpg",
-  "PXL_20260315_014057005.jpg",
-  "PXL_20260315_014059041.jpg",
-  "PXL_20260315_014101073.jpg",
-  "PXL_20260315_020658185.jpg",
-];
-
-export default function PilotClient() {
+export default function PilotClient({ images }: { images: string[] }) {
   const [selected, setSelected] = useState<string | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 

@@ -1,4 +1,8 @@
+import fs from "fs";
+import path from "path";
 import PilotClient from "./pilot-client";
+
+export const dynamic = "force-dynamic";
 
 const stats = [
   { value: "14", label: "Completed Jobs" },
@@ -7,6 +11,11 @@ const stats = [
 ];
 
 export default function PilotPage() {
+  const picturesDir = path.join(process.cwd(), "public", "Pictures");
+  const images = fs
+    .readdirSync(picturesDir)
+    .filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <div className="mb-10">
@@ -26,7 +35,7 @@ export default function PilotPage() {
         ))}
       </div>
 
-      <PilotClient />
+      <PilotClient images={images} />
     </div>
   );
 }
