@@ -125,13 +125,12 @@ export default function HomePage() {
           </div>
 
           {/* Right: photo with offset emerald background */}
-          <div className="relative flex justify-center">
-            <div className="absolute inset-0 bg-emerald-100 rounded-3xl translate-x-4 translate-y-4" />
+          <div className="flex justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/Pictures/FPS%20community/PXL_20260223_003432551.PORTRAIT.jpg"
               alt="Volunteer helping a senior"
-              className="relative rounded-3xl w-full max-w-sm md:max-w-full object-cover shadow-lg"
+              className="rounded-3xl w-full max-w-sm md:max-w-full object-cover shadow-lg"
               style={{ maxHeight: "560px", objectPosition: "top" }}
             />
           </div>
