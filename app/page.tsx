@@ -184,7 +184,7 @@ export default function HomePage() {
       <section className="py-16 px-4 bg-emerald-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Who Are Our Volunteers?
+            Our Volunteers
           </h2>
           <p className="text-lg text-gray-600 mb-4">
             Our volunteers are local high school and college students who want
