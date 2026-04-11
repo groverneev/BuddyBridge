@@ -128,7 +128,7 @@ export default function HomePage() {
           <div className="flex justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/Pictures/FPS%20community/PXL_20260223_003432551.PORTRAIT.jpg"
+              src="/Pictures/PXL_20260223_003432551.PORTRAIT.jpg"
               alt="Volunteer helping a senior"
               className="rounded-3xl w-full max-w-sm md:max-w-full object-cover shadow-lg"
               style={{ maxHeight: "560px", objectPosition: "top" }}

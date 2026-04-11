@@ -4,12 +4,10 @@ import { useState } from "react";
 
 const images = [
   "PXL_20260223_003432551.PORTRAIT.jpg",
-  "PXL_20260223_003433903.PORTRAIT.jpg",
   "PXL_20260223_003504790.PORTRAIT.jpg",
   "PXL_20260223_004959220.PORTRAIT.jpg",
   "PXL_20260223_005031074.PORTRAIT.jpg",
   "PXL_20260223_005108323.PORTRAIT.jpg",
-  "PXL_20260223_005111932.PORTRAIT.jpg",
   "PXL_20260309_012724726.jpg",
   "PXL_20260309_013010310.jpg",
   "PXL_20260309_014337371.jpg",
@@ -18,17 +16,12 @@ const images = [
   "PXL_20260309_014527829.jpg",
   "PXL_20260309_014814091.jpg",
   "PXL_20260309_015217192.PORTRAIT.jpg",
-  "PXL_20260309_015548513.jpg",
-  "PXL_20260309_015857766.MP.jpg",
-  "PXL_20260309_015900070.MP.jpg",
-  "PXL_20260309_015902702.MP.jpg",
   "PXL_20260315_013843976.MP.jpg",
   "PXL_20260315_013844970.jpg",
   "PXL_20260315_014054855.MP.jpg",
   "PXL_20260315_014057005.jpg",
   "PXL_20260315_014059041.jpg",
   "PXL_20260315_014101073.jpg",
-  "PXL_20260315_020654421.MP.jpg",
   "PXL_20260315_020658185.jpg",
 ];
 
@@ -69,7 +62,7 @@ export default function PilotClient() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`/Pictures/FPS%20community/${img}`}
+              src={`/Pictures/${img}`}
               alt=""
               className="w-full block transition-transform duration-300 group-hover:scale-105"
             />
@@ -108,7 +101,7 @@ export default function PilotClient() {
           {/* Image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`/Pictures/FPS%20community/${selected}`}
+            src={`/Pictures/${selected}`}
             alt=""
             className="max-w-full max-h-[90vh] rounded-xl object-contain shadow-2xl"
             onClick={(e) => e.stopPropagation()}
