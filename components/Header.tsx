@@ -16,6 +16,12 @@ export default function Header() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
           <Link
+            href="/pilot"
+            className="text-gray-700 hover:text-primary font-medium"
+          >
+            Pilot
+          </Link>
+          <Link
             href="/our-story"
             className="text-gray-700 hover:text-primary font-medium"
           >
@@ -75,6 +81,13 @@ export default function Header() {
             className="block text-gray-700 px-4 py-3 rounded-lg font-medium text-center hover:bg-gray-50"
           >
             Become a Volunteer
+          </Link>
+          <Link
+            href="/pilot"
+            onClick={() => setMenuOpen(false)}
+            className="block text-gray-700 px-4 py-3 rounded-lg font-medium text-center hover:bg-gray-50"
+          >
+            Pilot
           </Link>
           <Link
             href="/our-story"
