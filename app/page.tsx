@@ -105,21 +105,36 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-emerald-700 to-teal-800 py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Bridging Generations, One Task at a Time
-          </h1>
-          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-            Need a hand with technology, household chores, or everyday tasks? Our
-            trusted teen volunteers are here to help, free of charge.
-          </p>
-          <Link
-            href="/helpers"
-            className="inline-block bg-white text-emerald-700 text-xl px-8 py-4 rounded-xl font-semibold hover:bg-emerald-50 transition-colors"
-          >
-            Request Help
-          </Link>
+      <section className="bg-white py-16 md:py-24 px-4">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          {/* Left: text */}
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Bridging Generations, One Task at a Time
+            </h1>
+            <p className="text-xl text-gray-500 mb-10 leading-relaxed">
+              Need a hand with technology, household chores, or everyday tasks?
+              Our trusted teen volunteers are here to help, free of charge.
+            </p>
+            <Link
+              href="/helpers"
+              className="inline-block bg-emerald-700 text-white text-xl px-8 py-4 rounded-full font-semibold hover:bg-emerald-800 transition-colors"
+            >
+              Request Help
+            </Link>
+          </div>
+
+          {/* Right: photo with offset emerald background */}
+          <div className="relative flex justify-center">
+            <div className="absolute inset-0 bg-emerald-100 rounded-3xl translate-x-4 translate-y-4" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/Pictures/FPS%20community/PXL_20260223_003432551.PORTRAIT.jpg"
+              alt="Volunteer helping a senior"
+              className="relative rounded-3xl w-full max-w-sm md:max-w-full object-cover shadow-lg"
+              style={{ maxHeight: "560px", objectPosition: "top" }}
+            />
+          </div>
         </div>
       </section>
 
