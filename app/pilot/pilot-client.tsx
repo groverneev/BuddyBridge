@@ -2,20 +2,24 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { SiteImageWithUrl } from "@/lib/types";
 
-// Phone photos are either portrait (3:4) or landscape (4:3)
-function getDimensions(filename: string) {
-  return filename.includes("PORTRAIT")
+function getDimensions(image: SiteImageWithUrl) {
+  if (image.width && image.height) {
+    return { width: image.width, height: image.height };
+  }
+
+  return image.path.includes("PORTRAIT")
     ? { width: 900, height: 1200 }
     : { width: 1200, height: 900 };
 }
 
-export default function PilotClient({ images }: { images: string[] }) {
-  const [selected, setSelected] = useState<string | null>(null);
+export default function PilotClient({ images }: { images: SiteImageWithUrl[] }) {
+  const [selected, setSelected] = useState<SiteImageWithUrl | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
-  function open(img: string, index: number) {
-    setSelected(img);
+  function open(image: SiteImageWithUrl, index: number) {
+    setSelected(image);
     setSelectedIndex(index);
   }
 
@@ -39,19 +43,20 @@ export default function PilotClient({ images }: { images: string[] }) {
     <>
       {/* Masonry grid */}
       <div className="columns-2 md:columns-3 gap-3">
-        {images.map((img, i) => {
-          const { width, height } = getDimensions(img);
+        {images.map((image, i) => {
+          const { width, height } = getDimensions(image);
           return (
             <div
-              key={img}
+              key={image.id}
               className="break-inside-avoid mb-3 cursor-pointer overflow-hidden rounded-xl group"
-              onClick={() => open(img, i)}
+              onClick={() => open(image, i)}
             >
               <Image
-                src={`/Pictures/${img}`}
-                alt=""
+                src={image.url}
+                alt={image.alt_text || "BuddyBridge pilot gallery photo"}
                 width={width}
                 height={height}
+                unoptimized
                 style={{ width: "100%", height: "auto" }}
                 className="transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
@@ -91,9 +96,10 @@ export default function PilotClient({ images }: { images: string[] }) {
 
           {/* Image */}
           <Image
-            src={`/Pictures/${selected}`}
-            alt=""
+            src={selected.url}
+            alt={selected.alt_text || "BuddyBridge pilot gallery photo"}
             {...getDimensions(selected)}
+            unoptimized
             style={{ maxWidth: "100%", maxHeight: "90vh", width: "auto", height: "auto" }}
             className="rounded-xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}

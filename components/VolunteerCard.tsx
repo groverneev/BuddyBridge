@@ -19,6 +19,7 @@ export default function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
                 alt={volunteer.name}
                 width={64}
                 height={64}
+                unoptimized
                 className="w-full h-full object-cover"
               />
             ) : (

@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { getHomepageHeroImage } from "@/lib/site-images";
 
 const reviews = [
   {
@@ -101,7 +103,9 @@ const steps = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const heroImage = await getHomepageHeroImage();
+
   return (
     <div>
       {/* Hero */}
@@ -126,13 +130,20 @@ export default function HomePage() {
 
           {/* Right: photo with offset emerald background */}
           <div className="flex justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/Pictures/PXL_20260223_003432551.PORTRAIT.jpg"
-              alt="Volunteer helping a senior"
-              className="rounded-3xl w-full max-w-sm md:max-w-full object-cover shadow-lg"
-              style={{ maxHeight: "560px", objectPosition: "top" }}
-            />
+            {heroImage ? (
+              <Image
+                src={heroImage.url}
+                alt={heroImage.alt_text || "Volunteer helping a senior"}
+                width={heroImage.width ?? 900}
+                height={heroImage.height ?? 1200}
+                unoptimized
+                className="rounded-3xl w-full max-w-sm md:max-w-full object-cover shadow-lg"
+                style={{ maxHeight: "560px", objectPosition: "top" }}
+                priority
+              />
+            ) : (
+              <div className="rounded-3xl w-full max-w-sm md:max-w-full min-h-[420px] bg-emerald-100 shadow-lg" />
+            )}
           </div>
         </div>
       </section>

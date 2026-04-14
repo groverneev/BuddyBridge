@@ -7,7 +7,7 @@ BuddyBridge ([buddybridge.us](https://buddybridge.us)) is a marketplace connecti
 ## Tech Stack
 
 - Next.js 16 (App Router) + TypeScript + Tailwind CSS v4
-- Supabase (Postgres + file storage for volunteer photos)
+- Supabase (Postgres + file storage for volunteer photos and site gallery images)
 - Resend (email notifications to admin)
 - Hosted on Vercel
 
@@ -23,13 +23,14 @@ BuddyBridge ([buddybridge.us](https://buddybridge.us)) is a marketplace connecti
 
 ## Database
 
-Two tables in Supabase — see `supabase/schema.sql` for full schema:
+Three tables in Supabase — see `supabase/schema.sql` for full schema:
 - `volunteers` — profiles with categories (text[]) and availability (jsonb)
 - `help_requests` — includes senior_address, links to volunteer via FK
+- `site_images` — metadata for pilot gallery / homepage photos stored in Supabase Storage
 
 RLS is enabled. Volunteers are publicly readable. Writes use service role key (bypasses RLS).
 
-Storage bucket `volunteer-photos` is public for reads.
+Storage buckets `volunteer-photos` and `site-images` are public for reads.
 
 ## File Layout
 
@@ -37,7 +38,7 @@ Storage bucket `volunteer-photos` is public for reads.
 - `components/` — shared UI components (Header, Footer, VolunteerCard, CategoryFilter, RequestHelpModal)
 - `lib/` — types, constants, Supabase/Resend clients
 - `supabase/` — SQL schema
-- `public/` — static assets (neev.png creator headshot, meher.png volunteer headshot, icon.svg favicon)
+- `public/` — static brand assets only (founder headshots, favicon, other truly fixed files)
 
 ## Design
 

@@ -18,6 +18,9 @@ A marketplace-style platform connecting seniors with trusted teen volunteers for
 app/
   page.tsx                        # Landing page
   about/page.tsx                  # About page
+  pilot/
+    page.tsx                      # Pilot gallery page (server component)
+    pilot-client.tsx              # Client-side masonry grid + lightbox
   helpers/
     page.tsx                      # Browse volunteers (server component)
     helpers-client.tsx            # Client-side filtering
@@ -38,6 +41,7 @@ components/
 lib/
   supabase.ts                     # Supabase client (lazy init)
   resend.ts                       # Resend client (lazy init)
+  site-images.ts                  # Site image queries + public URL helpers
   categories.ts                   # Service categories constant
   types.ts                        # TypeScript types
 supabase/
@@ -55,6 +59,16 @@ supabase/
 **`volunteers`** — name, email, phone, photo_url, bio, categories (text[]), availability (jsonb)
 
 **`help_requests`** — volunteer_id (FK), senior_name, senior_phone, senior_email, senior_address, description, preferred_date, status
+
+**`site_images`** — metadata for pilot gallery / homepage photos stored in Supabase Storage bucket `site-images`
+
+## Image Storage
+
+- Keep truly fixed brand assets in `public/`
+- Store volunteer-uploaded photos in Supabase Storage bucket `volunteer-photos`
+- Store site-managed content images in Supabase Storage bucket `site-images`, with metadata in `site_images`
+- Homepage hero image is loaded from `site_images`, preferring a featured `homepage` row and falling back to the first `pilot` image
+- Pilot gallery images are loaded from `site_images` rows where `section = 'pilot'`
 
 ## Service Categories
 

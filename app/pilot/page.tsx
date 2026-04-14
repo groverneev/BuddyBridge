@@ -1,6 +1,5 @@
-import fs from "fs";
-import path from "path";
 import PilotClient from "./pilot-client";
+import { getSiteImages } from "@/lib/site-images";
 
 export const dynamic = "force-dynamic";
 
@@ -10,11 +9,8 @@ const stats = [
   { value: "100%", label: "Completion Rate" },
 ];
 
-export default function PilotPage() {
-  const picturesDir = path.join(process.cwd(), "public", "Pictures");
-  const images = fs
-    .readdirSync(picturesDir)
-    .filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
+export default async function PilotPage() {
+  const images = await getSiteImages("pilot");
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">

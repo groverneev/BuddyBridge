@@ -10,6 +10,24 @@ export interface Volunteer {
   created_at: string;
 }
 
+export interface SiteImage {
+  id: string;
+  bucket: string;
+  path: string;
+  section: "pilot" | "homepage";
+  alt_text: string | null;
+  caption: string | null;
+  width: number | null;
+  height: number | null;
+  sort_order: number;
+  is_featured: boolean;
+  created_at: string;
+}
+
+export interface SiteImageWithUrl extends SiteImage {
+  url: string;
+}
+
 export interface HelpRequest {
   id: string;
   volunteer_id: string;
