@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getHomepageHeroImage } from "@/lib/site-images";
+import heroPicture from "@/public/HomepagePicture.png";
 
 const reviews = [
   {
@@ -103,9 +103,7 @@ const steps = [
   },
 ];
 
-export default async function HomePage() {
-  const heroImage = await getHomepageHeroImage();
-
+export default function HomePage() {
   return (
     <div>
       {/* Hero */}
@@ -130,20 +128,13 @@ export default async function HomePage() {
 
           {/* Right: photo with offset emerald background */}
           <div className="flex justify-center">
-            {heroImage ? (
-              <Image
-                src={heroImage.url}
-                alt={heroImage.alt_text || "Volunteer helping a senior"}
-                width={heroImage.width ?? 900}
-                height={heroImage.height ?? 1200}
-                unoptimized
-                className="rounded-3xl w-full max-w-sm md:max-w-full object-cover shadow-lg"
-                style={{ maxHeight: "560px", objectPosition: "top" }}
-                priority
-              />
-            ) : (
-              <div className="rounded-3xl w-full max-w-sm md:max-w-full min-h-[420px] bg-emerald-100 shadow-lg" />
-            )}
+            <Image
+              src={heroPicture}
+              alt="Volunteer helping a senior"
+              className="rounded-3xl w-full max-w-sm md:max-w-full object-cover shadow-lg"
+              style={{ maxHeight: "560px", objectPosition: "top" }}
+              priority
+            />
           </div>
         </div>
       </section>
