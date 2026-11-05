@@ -8,3 +8,6 @@ export function getResend(): Resend {
   }
   return _resend;
 }
+
+/** Sender for admin notifications. Set RESEND_FROM once buddybridge.us is verified in Resend. */
+export const ADMIN_FROM = process.env.RESEND_FROM ?? "BuddyBridge <onboarding@resend.dev>";

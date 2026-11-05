@@ -10,7 +10,22 @@ A marketplace-style platform connecting seniors with trusted teen volunteers for
 - **Styling:** Tailwind CSS v4
 - **Database:** Supabase (Postgres + Storage)
 - **Email:** Resend
-- **Hosting:** Vercel
+- **Hosting:** Vercel (Analytics + Speed Insights)
+- **Package manager:** Bun
+- **Validation:** Zod
+- **Spam protection:** Cloudflare Turnstile
+- **Error tracking:** Sentry
+
+## Development
+
+```bash
+bun install
+cp .env.example .env.local   # fill in keys
+bun dev                      # http://localhost:3000
+bun run typecheck
+bun run email                # preview email templates
+bun run gen:types            # regenerate lib/database.types.ts from Supabase
+```
 
 ## Project Structure
 

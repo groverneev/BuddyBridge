@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useActionState } from "react";
 import { requestHelp } from "@/app/actions/request-help";
+import SpamCheck from "@/components/SpamCheck";
 
 export default function RequestHelpModal({
   volunteerId,
@@ -14,7 +15,7 @@ export default function RequestHelpModal({
   open: boolean;
   onClose: () => void;
 }) {
-  const formRef = useRef<HTMLFormElement>(null);
+  const [state, formAction, isPending] = useActionState(requestHelp, null);
 
   if (!open) return null;
 
@@ -44,9 +45,14 @@ export default function RequestHelpModal({
           Fill out this form and we&apos;ll get back to you within 24 hours.
         </p>
 
-        <form ref={formRef} action={requestHelp} className="space-y-4">
+        <form action={formAction} className="space-y-4">
           <input type="hidden" name="volunteer_id" value={volunteerId} />
-          <input type="hidden" name="volunteer_name" value={volunteerName} />
+
+          {state?.error && (
+            <p role="alert" className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-red-800">
+              {state.error}
+            </p>
+          )}
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -125,6 +131,8 @@ export default function RequestHelpModal({
             />
           </div>
 
+          <SpamCheck />
+
           <div className="flex gap-3 pt-2">
             <button
               type="button"
@@ -135,9 +143,10 @@ export default function RequestHelpModal({
             </button>
             <button
               type="submit"
-              className="flex-1 bg-primary text-white px-4 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+              disabled={isPending}
+              className="flex-1 bg-primary text-white px-4 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Request
+              {isPending ? "Sending…" : "Send Request"}
             </button>
           </div>
         </form>

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Volunteer } from "@/lib/types";
+import { PublicVolunteer } from "@/lib/types";
 import RequestHelpModal from "@/components/RequestHelpModal";
 
-export default function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
+export default function VolunteerCard({ volunteer }: { volunteer: PublicVolunteer }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (

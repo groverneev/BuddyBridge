@@ -1,12 +1,12 @@
 "use client";
 
-import { Volunteer } from "@/lib/types";
+import { PublicVolunteer } from "@/lib/types";
 import VolunteerCard from "@/components/VolunteerCard";
 
 export default function HelpersClient({
   volunteers,
 }: {
-  volunteers: Volunteer[];
+  volunteers: PublicVolunteer[];
 }) {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">

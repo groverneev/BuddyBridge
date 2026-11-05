@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useTransition, useState } from "react";
 import { volunteerSignup } from "@/app/actions/volunteer-signup";
 import Link from "next/link";
+import SpamCheck from "@/components/SpamCheck";
 
 /** Resize + re-encode an image to JPEG so it never exceeds ~500 KB. */
 async function compressImage(file: File): Promise<File> {
@@ -51,6 +52,7 @@ function SignupForm() {
   const success = searchParams.get("success");
   const [isPending, startTransition] = useTransition();
   const [photoName, setPhotoName] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   if (success) {
     return (
@@ -81,8 +83,10 @@ function SignupForm() {
       const compressed = await compressImage(photo);
       formData.set("photo", compressed, compressed.name);
     }
+    setError(null);
     startTransition(async () => {
-      await volunteerSignup(formData);
+      const result = await volunteerSignup(null, formData);
+      if (result?.error) setError(result.error);
     });
   }
 
@@ -96,6 +100,12 @@ function SignupForm() {
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {error && (
+          <p role="alert" className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-red-800">
+            {error}
+          </p>
+        )}
+
         {/* Name */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -169,6 +179,8 @@ function SignupForm() {
             placeholder="Tell seniors a bit about yourself — what you enjoy, why you want to volunteer, etc."
           />
         </div>
+
+        <SpamCheck />
 
         <button
           type="submit"

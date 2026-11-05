@@ -10,6 +10,12 @@ export interface Volunteer {
   created_at: string;
 }
 
+/** Columns that are safe to send to the browser (no contact details). */
+export const PUBLIC_VOLUNTEER_COLUMNS =
+  "id, name, photo_url, bio, categories, availability, created_at" as const;
+
+export type PublicVolunteer = Omit<Volunteer, "email" | "phone">;
+
 export interface SiteImage {
   id: string;
   bucket: string;

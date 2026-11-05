@@ -50,10 +50,15 @@ alter table volunteers enable row level security;
 alter table help_requests enable row level security;
 alter table site_images enable row level security;
 
--- Public read access for volunteers (anyone can browse)
+-- Public read access for volunteer profiles (anyone can browse)
 create policy "Volunteers are publicly readable"
   on volunteers for select
   using (true);
+
+-- ...but never their contact details
+revoke select on table volunteers from anon, authenticated;
+grant select (id, name, photo_url, bio, categories, availability, created_at)
+  on table volunteers to anon, authenticated;
 
 create policy "Site images are publicly readable"
   on site_images for select
@@ -80,11 +85,5 @@ create policy "Site images are publicly accessible"
   on storage.objects for select
   using (bucket_id = 'site-images');
 
--- Allow uploads to volunteer photos bucket (via service role)
-create policy "Allow volunteer photo uploads"
-  on storage.objects for insert
-  with check (bucket_id = 'volunteer-photos');
-
-create policy "Allow site image uploads"
-  on storage.objects for insert
-  with check (bucket_id = 'site-images');
+-- Uploads happen only through the server with the service role key, which
+-- bypasses RLS, so there are deliberately no insert policies on storage.objects.

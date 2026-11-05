@@ -3,23 +3,35 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit",
+    "email": "email dev --dir emails",
+    "gen:types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_ID --schema public > lib/database.types.ts"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.6.3",
+    "@react-email/components": "^1.0.12",
+    "@sentry/nextjs": "^11.10.0",
     "@supabase/supabase-js": "^2.95.3",
     "@tailwindcss/postcss": "^4.1.18",
-    "@types/node": "^25.2.3",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "next": "^16.1.6",
     "postcss": "^8.5.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "resend": "^6.9.2",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3"
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react-email": "^6.11.6",
+    "supabase": "^3.0.0",
+    "typescript": "~5.9.3"
   }
 }
